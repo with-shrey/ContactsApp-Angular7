@@ -1,0 +1,64 @@
+<mat-toolbar color="#ffffff">
+  <mat-icon (click)="close()">arrow_back</mat-icon>
+
+
+  <!-- This fills the remaining space of the current row -->
+  <span class="fill-space"></span>
+
+  <span *ngIf="!edit"><mat-icon (click)="setEdit()" class="icon">edit</mat-icon></span>
+  <span *ngIf="edit"><mat-icon (click)="deleteContact()" class="delete-icon icon">delete</mat-icon></span>
+  <span *ngIf="edit"><mat-icon (click)="saveContact()" class="icon">save</mat-icon></span>
+</mat-toolbar>
+<form class="contact-form" *ngIf="edit">
+    <mat-form-field class="row col-md-12">
+      <input matInput placeholder="First Name" name="first_name" [(ngModel)]="editContactData.first_name">
+    </mat-form-field>
+
+    <mat-form-field class="row col-md-12">
+      <input matInput placeholder="Last Name" name="last_name" [(ngModel)]="editContactData.last_name"/>
+    </mat-form-field>
+  <mat-form-field class="row col-md-12">
+      <input matInput placeholder="Email" name="email" [(ngModel)]="editContactData.email">
+    </mat-form-field>
+
+    <mat-form-field class="row col-md-12">
+      <input matInput placeholder="Phone" name="phone" [(ngModel)]="editContactData.phone"/>
+    </mat-form-field>
+</form>
+<div *ngIf="!edit">
+<div  class="row contact-header">
+  <div class="col-md-12">
+    <img [src]="'https://ui-avatars.com/api/?background=0D8ABC&color=fff&name=' + contact.first_name+'+'+contact.last_name"
+         [alt]="contact.first_name+contact.last_name"
+         class="img-responsive img-circle center-block"
+         style=" display:block;
+    margin:auto;"
+    />
+    <h6 class="name">{{contact.first_name+' '+contact.last_name}}</h6>
+
+  </div>
+</div>
+  <div class="row">
+    <div class="col-md-11 text-field">
+        <h6 class="text-label">First Name</h6>
+        <p>{{contact.first_name}}</p>
+    </div>
+    <div class="col-md-11 text-field">
+      <h6 class="text-label">Last Name</h6>
+      <p>{{contact.last_name}}</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-11 text-field">
+      <h6 class="text-label">Email</h6>
+      <p>{{contact.email}}</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-11 text-field">
+      <h6 class="text-label">Phone</h6>
+      <p>{{contact.phone}}</p>
+    </div>
+  </div>
+</div>
+

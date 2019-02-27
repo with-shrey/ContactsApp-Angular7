@@ -1,0 +1,14 @@
+<mat-card style="">
+  <div class="row">
+<div class="col-md-2">
+  <img [src]="'https://ui-avatars.com/api/?background=0D8ABC&color=fff&name=' + contact.first_name+'+'+contact.last_name"
+       [alt]="contact.first_name+contact.last_name"
+       class="img-responsive img-circle"
+  />
+</div>
+<div class="col-md-10">
+  <span class="name">{{contact.first_name + ' ' + contact.last_name}}</span>
+  <mat-card-subtitle class="subtitle">{{contact.phone}}</mat-card-subtitle>
+</div>
+  </div>
+</mat-card>

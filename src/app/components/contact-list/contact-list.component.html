@@ -1,0 +1,27 @@
+<div [ngClass]="selectedContact === null? 'col-md-6 offset-md-3 list': 'col-md-6 list'"
+     infiniteScroll
+     [infiniteScrollDistance]="2"
+     [infiniteScrollThrottle]="200"
+     (scrolled)="onScroll()"
+     [scrollWindow]="selectedContact !== null"
+>
+  <div class="row col-md-4 offset-md-8">
+  <div class="input-group">
+    <input type="text" class="form-control" placeholder="Search" [(ngModel)]="searchTerm">
+    <div class="input-group-btn">
+      <button class="btn btn-default" type="submit">
+        <mat-icon (click)="beginSearch()">search</mat-icon>
+      </button>
+    </div>
+  </div>
+  </div>
+  <div *ngFor="let contact of contacts; let i = index;">
+  <app-contact-list-item
+    *ngIf="contact"
+    class="row"
+    [contact] = contact
+    (click) = "selectContact(i)"
+  ></app-contact-list-item>
+  </div>
+</div>
+<app-contact-display *ngIf="selectedContact !== null" class="col-md-6" [(contact)]="contacts[selectedContact]" (cancelled)="selectedContact = null" ></app-contact-display>
