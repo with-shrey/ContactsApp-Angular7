@@ -1,4 +1,8 @@
 @import "../contact-list-item/contact-list-item.component";
+.main{
+  background: #f9f9f9;
+  width: 100%;
+}
 .fill-space {
 flex: 1 1 auto;
 }
@@ -27,6 +31,7 @@ mat-toolbar{
 }
 
 .text-field{
+  width: 100%;
   margin-left: 20px;
   margin-bottom: 10px;
   border-radius: 5px;
@@ -34,6 +39,7 @@ mat-toolbar{
 }
 
 .contact-form{
+  width: 100%;
   margin-top: 80px;
   margin-left: 50px;
   margin-right: 50px;
