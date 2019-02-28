@@ -2,6 +2,9 @@
 .fill-space {
 flex: 1 1 auto;
 }
+mat-toolbar{
+  z-index: 1000;
+}
 .delete-icon{
   color: #ff6f35;
 }

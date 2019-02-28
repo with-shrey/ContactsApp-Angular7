@@ -9,15 +9,21 @@ import {ToastrService} from "ngx-toastr";
   styleUrls: ['./contact-display.component.scss']
 })
 export class ContactDisplayComponent implements OnInit {
-  @Input()contact: Contact;
-  @Output()contactChange: EventEmitter<Contact> = new EventEmitter();
+  contact: Contact;
+  @Input('_contact')
+  set _contact(contact: Contact) {
+    this.service.getContact(contact.id).subscribe(contact => this.contact = contact);
+    this.contact = contact;
+    this.edit = false;
+  }
+  @Output()_contactChange: EventEmitter<Contact> = new EventEmitter();
   editContactData: Contact;
   @Output() cancelled: EventEmitter<any> = new EventEmitter();
   edit = false;
   constructor(private service: ContactService,
               private toastr: ToastrService
   ) { }
-  fullName(contact){
+  static fullName(contact){
     return contact.first_name+ ' '+contact.last_name
   }
   setEdit(){
@@ -31,23 +37,22 @@ export class ContactDisplayComponent implements OnInit {
     this.service.editContact(this.editContactData)
       .subscribe(status => {
         console.log(status);
-        this.contactChange.emit(this.editContactData);
+        this._contactChange.emit(this.editContactData);
         this.contact = this.editContactData;
         this.edit = false;
-        this.toastr.success('Saved Successfully',this.fullName(this.editContactData))
+        this.toastr.success('Saved Successfully',ContactDisplayComponent.fullName(this.editContactData))
       });
   }
   deleteContact(){
     this.service.deleteContact(this.editContactData)
       .subscribe(contact => {
         console.log(contact);
-        this.contactChange.emit(null);
+        this._contactChange.emit(null);
         this.close();
-        this.toastr.success('Deleted Successfully',this.fullName(this.contact))
+        this.toastr.success('Deleted Successfully',ContactDisplayComponent.fullName(this.contact))
       });
   }
   ngOnInit() {
-    this.service.getContact(this.contact.id).subscribe(contact => this.contact = contact)
   }
 
 }

@@ -5,7 +5,7 @@
      (scrolled)="onScroll()"
      [scrollWindow]="selectedContact !== null"
 >
-  <div class="row col-md-4 offset-md-8">
+  <div class="row col-md-5 offset-md-7 col-xs-12 col-sm-12 ">
   <div class="input-group">
     <input type="text" class="form-control" placeholder="Search" [(ngModel)]="searchTerm">
     <div class="input-group-btn">
@@ -24,4 +24,4 @@
   ></app-contact-list-item>
   </div>
 </div>
-<app-contact-display *ngIf="selectedContact !== null" class="col-md-6" [(contact)]="contacts[selectedContact]" (cancelled)="selectedContact = null" ></app-contact-display>
+<app-contact-display *ngIf="selectedContact !== null" class="col-md-6" [(_contact)]="contacts[selectedContact]" (cancelled)="selectedContact = null" ></app-contact-display>
