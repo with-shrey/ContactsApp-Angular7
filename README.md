@@ -1,2 +1,2 @@
 # Contacts App
-view at contacts.shrey.work
+view at http://contacts.shrey.work
