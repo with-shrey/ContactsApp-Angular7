@@ -7,7 +7,6 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {CommonModule} from "@angular/common";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ToastrModule} from "ngx-toastr";
-import {MatToolbar} from "@angular/material";
 import {MaterialModule} from "./modules/material.module";
 import { ContactListComponent } from './components/contact-list/contact-list.component';
 import { ContactDisplayComponent } from './components/contact-display/contact-display.component';

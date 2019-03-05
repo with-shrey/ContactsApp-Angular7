@@ -1,0 +1,3 @@
+[submodule "ContactsApp-DjangoREST"]
+	path = ContactsApp-DjangoREST
+	url = https://github.com/with-shrey/ContactsApp-DjangoREST.git
